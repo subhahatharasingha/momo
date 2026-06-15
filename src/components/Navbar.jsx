@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import sidebarimage from '../assets/sidebarimage.png'; // Imported your newly renamed avatar logo asset
 
 export default function Navbar() {
   const location = useLocation();
@@ -35,7 +36,9 @@ export default function Navbar() {
 
   return (
     <>
-      {/*DESKTOP STYLING & FLOATING CONTAINER (UNTOUCHED FOR WINDOWS SIZE)*/}
+      {/* =========================================================================
+          DESKTOP STYLING & FLOATING CONTAINER (UNTOUCHED FOR WINDOWS SIZE)
+         ========================================================================= */}
       <div className="fixed top-[20px] lg:top-[40px] left-0 w-full px-4 md:px-10 z-50 pointer-events-none">
         <nav 
           className="mx-auto w-full max-w-[1840px] h-[64px] lg:h-[88px] rounded-[100px] flex items-center justify-between px-6 lg:px-[57px] border border-white/10 shadow-2xl backdrop-blur-sm pointer-events-auto"
@@ -43,6 +46,18 @@ export default function Navbar() {
             background: 'linear-gradient(180deg, #494948 0%, #272829 100%)'
           }}
         >
+          {/* MOBILE BRANDING AVATAR LOGO 
+            - Visible only on mobile/tablet viewports (hidden lg:block hidden on desktops)
+            - Placed exactly on the left edge as shown in image_be7ec0.png
+          */}
+          <div className="block lg:hidden shrink-0">
+            <img 
+              src={sidebarimage} 
+              alt="Memo Mascot Avatar" 
+              className="w-9 h-9 md:w-11 md:h-11 object-contain rounded-full border border-white/10 shadow-md"
+            />
+          </div>
+
           {/* Desktop Navigation Links Menu: Untouched */}
           <div className="hidden lg:flex flex-wrap items-center justify-center gap-x-8 xl:gap-x-12">
             {navLinks.map((link) => {
